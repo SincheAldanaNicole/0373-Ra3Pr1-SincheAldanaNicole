@@ -1,30 +1,41 @@
-    =<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>Hola mundo</h1>
-        <form id="Formulario">
-            <input type="text" id=nombre" placeholder="Nombre de alumno"><br>
-            <input type="number" id="examen" placeholder="Nota del examen"><br>
-            <input type="number" id="practicas" placeholder="Nota de prácticas"><br>  
-            <input type="number" id="actitud" placeholder="Nota de actitud"><br>
-            <button type="submit">Añadir alumno</button>
-        </form>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Nota final</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody id="cosTabla">
-            </tbody>
-        </table>
-        <script src="script.js"></script>
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulari de Notes - 0373</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Gestió de Notes d'Alumnes</h1>
+
+    <form id="formulari-notes">
+        <label>Nom de l'alumne: <input type="text" id="nom"></label><br>
+        <label>Nota Examen (60%): <input type="number" step="0.1" id="examen"></label><br>
+        <label>Nota Pràctiques (30%): <input type="number" step="0.1" id="practiques"></label><br>
+        <label>Nota Actitud (10%): <input type="number" step="0.1" id="actitud"></label><br>
+        <button type="submit">Afegir Alumne</button>
+    </form>
+
+    <div id="missatges-error" style="color: red;"></div>
+
+    <hr>
+
+    <h3>Llistat d'Alumnes</h3>
+    <button onclick="ordenarAlumnes('desc')">Ordenar Major a Menor</button>
+    <button onclick="ordenarAlumnes('asc')">Ordenar Menor a Major</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Nota Final</th>
+                <th>Estat</th>
+            </tr>
+        </thead>
+        <tbody id="cos-taula">
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
