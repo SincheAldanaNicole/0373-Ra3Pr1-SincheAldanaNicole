@@ -2,29 +2,37 @@
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <title>Formulari de Notes - 0373</title>
+    <title>0373-Ra3Pr1-SincheAldan</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Formulari de notes d'alumnes</h1>
-
     <form id="formulari-notes">
-        <label>Nom de l'alumne: <input type="text" id="nom"></label><br>
-        <label>Nota Examen (60%): <input type="number" step="0.1" id="examen"></label><br>
-        <label>Nota Pràctiques (30%): <input type="number" step="0.1" id="practiques"></label><br>
-        <label>Nota Actitud (10%): <input type="number" step="0.1" id="actitud"></label><br>
-        <button type="submit">Afegir Alumne</button>
+        <div class="control-formulari">
+            <label for="nom">Nom de l'alumne:</label>
+            <input type="text" id="nom">
+        </div>
+        <div class="control-formulari">
+            <label for="examen">Nota Examen (60%):</label>
+            <input type="number" id="examen" step="0.01">
+        </div>
+        <div class="control-formulari">
+            <label for="practiques">Nota Pràctiques (30%):</label>
+            <input type="number" id="practiques" step="0.01">
+        </div>
+        <div class="control-formulari">
+            <label for="actitud">Nota Actitud (10%):</label>
+            <input type="number" id="actitud" step="0.01">
+        </div>
+        <button type="submit" id="btn-afegir">Afegir Alumne</button>
     </form>
-
-    <div id="missatges-error" style="color: red;"></div>
-
+    <div id="missatges-error"></div>
     <hr>
-
-    <h3>Llistat d'Alumnes</h3>
-    <button onclick="ordenarAlumnes('desc')">Ordenar Major a Menor</button>
-    <button onclick="ordenarAlumnes('asc')">Ordenar Menor a Major</button>
-
-    <table border="1">
+    <div class="accions-taula">
+        <button onclick="ordenarAlumnes('desc')">Major a Menor</button>
+        <button onclick="ordenarAlumnes('asc')">Menor a Major</button>
+    </div>
+    <table>
         <thead>
             <tr>
                 <th>Nom</th>
@@ -35,7 +43,6 @@
         <tbody id="cos-taula">
         </tbody>
     </table>
-
-    <script src="script.js"></script>
+    <script src="javascript.js"></script>
 </body>
 </html>
