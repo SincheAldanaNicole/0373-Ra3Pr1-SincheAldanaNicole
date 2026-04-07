@@ -55,23 +55,21 @@ function afegirAlumne(nom, ex, pr, ac) {
 }
 
 //Funció per mostrar la taula
+
 function mostrarAlumnes() {
     cosTaula.innerHTML = ""; 
-
     alumnes.forEach(alumne => {
+        let classeColor = alumne.notaFinal >= 5 ? "celda-aprovat" : "celda-suspes";
         let fila = `
             <tr>
                 <td>${alumne.nom}</td>
-                <td>${alumne.notaFinal.toFixed(2)}</td>
-                <td style="color: ${alumne.estat === 'Aprovat' ? 'green' : 'red'}">
-                    ${alumne.estat}
-                </td>
+                <td class="${classeColor}">${alumne.notaFinal.toFixed(2)}</td>
+                <td>${alumne.estat}</td>
             </tr>
         `;
         cosTaula.innerHTML += fila;
     });
 }
-
 //Funció per ordenar 
 function ordenarAlumnes(criteri) {
     if (criteri === 'desc') {
