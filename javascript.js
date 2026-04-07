@@ -1,18 +1,18 @@
-// 1. Variables i elements HTML
+//Variables i elements 
 const formulari = document.getElementById("formulari-notes");
 const divErrors = document.getElementById("missatges-error");
 const cosTaula = document.getElementById("cos-taula");
 
-let alumnes = []; // Array per guardar els objectes alumne
+let alumnes = []; 
 
-// 2. Funció per validar i processar el formulari
+//Funció per validar i processar el formulari
 formulari.addEventListener("submit", function(e) {
-    e.preventDefault(); // Evita que la pàgina es recarregui
+    e.preventDefault(); 
     validarFormulari();
 });
 
 function validarFormulari() {
-    divErrors.innerHTML = ""; // Netejar errors anteriors
+    divErrors.innerHTML = ""; 
     
     const nom = document.getElementById("nom").value.trim();
     const examen = parseFloat(document.getElementById("examen").value);
@@ -21,7 +21,6 @@ function validarFormulari() {
 
     let errors = [];
 
-    // Validacions segons el PDF
     if (nom === "") errors.push("El nom no pot estar buit.");
     
     if (isNaN(examen) || examen < 0 || examen > 10) 
@@ -37,15 +36,14 @@ function validarFormulari() {
         divErrors.innerHTML = errors.join("<br>");
     } else {
         afegirAlumne(nom, examen, practiques, actitud);
-        formulari.reset(); // Neteja el formulari desprès d'afegir
+        formulari.reset(); 
     }
 }
 
-// 3. Funció per calcular la nota i crear l'objecte
+//Funció per calcular la nota i crear l'objecte
 function afegirAlumne(nom, ex, pr, ac) {
     const notaFinal = (ex * 0.6) + (pr * 0.3) + (ac * 0.1);
     
-    // Creació de l'objecte alumne
     let nouAlumne = {
         nom: nom,
         notaFinal: notaFinal,
@@ -56,9 +54,9 @@ function afegirAlumne(nom, ex, pr, ac) {
     mostrarAlumnes();
 }
 
-// 4. Funció per mostrar la taula
+//Funció per mostrar la taula
 function mostrarAlumnes() {
-    cosTaula.innerHTML = ""; // Buidar la taula
+    cosTaula.innerHTML = ""; 
 
     alumnes.forEach(alumne => {
         let fila = `
@@ -74,7 +72,7 @@ function mostrarAlumnes() {
     });
 }
 
-// 5. Funció per ordenar (Utilitzant el mètode sort del PDF)
+//Funció per ordenar 
 function ordenarAlumnes(criteri) {
     if (criteri === 'desc') {
         alumnes.sort((a, b) => b.notaFinal - a.notaFinal);
